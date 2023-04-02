@@ -6,8 +6,10 @@ import me.bogatyr.coursework3.model.Color;
 import me.bogatyr.coursework3.model.Size;
 import me.bogatyr.coursework3.service.SockService;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,5 +48,10 @@ public class SockController {
     @GetMapping("/export")
     public FileSystemResource exportData() throws IOException {
         return sockService.exportData();
+    }
+    @PostMapping(name = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> importData(@RequestParam("file") MultipartFile file) throws IOException {
+        sockService.importData(file.getInputStream());
+        return ResponseEntity.accepted().build();
     }
 }
