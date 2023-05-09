@@ -38,7 +38,7 @@ UPDATE employee SET first_name = 'Taras' WHERE id = 1;
 UPDATE employee SET first_name = 'Makar' WHERE id = 2;
 
 SELECT first_name AS Имя, sum(age) AS Суммарный_возвраст FROM employee
-GROUP BY first_name, age;
+GROUP BY first_name;
 
 SELECT * FROM employee WHERE age = (SELECT MIN(age) FROM employee);
 SELECT * FROM employee WHERE age = (SELECT MAX(age) FROM employee);
