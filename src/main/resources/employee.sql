@@ -23,3 +23,22 @@ INSERT INTO employee (first_name, last_name, gender, age) VALUES ('Taras', 'Tara
 INSERT INTO employee (first_name, last_name, gender, age) VALUES ('Makar', 'Makarov', 'm', 18);
 
 SELECT * FROM employee;
+
+SELECT first_name AS Имя, last_name AS Фамилия
+FROM employee
+ORDER BY Фамилия DESC, Имя;
+
+SELECT * FROM employee WHERE age < 30 OR age > 50;
+SELECT * FROM employee WHERE age BETWEEN 30 AND 50;
+
+SELECT * FROM employee WHERE first_name LIKE '____';
+
+SELECT * FROM employee;
+UPDATE employee SET first_name = 'Taras' WHERE id = 1;
+UPDATE employee SET first_name = 'Makar' WHERE id = 2;
+
+SELECT first_name AS Имя, sum(age) AS Суммарный_возвраст FROM employee
+GROUP BY first_name, age;
+
+SELECT * FROM employee WHERE age = (SELECT MIN(age) FROM employee);
+SELECT * FROM employee WHERE age = (SELECT MAX(age) FROM employee);
